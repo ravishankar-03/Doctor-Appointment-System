@@ -47,7 +47,10 @@ const Login = () => {
         <Link to={"/register"} className="m-2 text-decoration-none">
           Not a user register here
         </Link>
-        <button className="btn btn-primary" type="submit">
+        {/* <button className="btn btn-primary" type="submit">
+          Login
+        </button> */}
+        <button className="bn5" type="submit">
           Login
         </button>
       </Form>

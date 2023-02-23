@@ -52,7 +52,7 @@ const BookingPage = () => {
       dispatch(hideLoading());
       if (res.data.success) {
         setIsAvailable(true);
-        console.log(isAvailable);
+        // console.log(isAvailable);
         message.success(res.data.message);
       } else {
         message.error(res.data.message);

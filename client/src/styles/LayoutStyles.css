@@ -15,6 +15,7 @@
   box-shadow: 0px 0px 20px #00000014;
   margin-right: 20px;
   color: #5a607f;
+  transition: all 0.5s;
 }
 .content {
   width: 100%;
@@ -35,17 +36,31 @@
   box-shadow: 0px 0px 20px #00000014;
   background-color: white;
 }
+.logo {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  /* justify-content: space-between; */
+  font-size: 1.2rem;
+  /* gap: 30px; */
+}
 .logo h6 {
   font-size: 1.5rem;
   text-align: center;
   margin: 20px 0px;
   font-weight: 800;
+  margin-left: 20px;
+}
+.logo i {
+  cursor: pointer;
+  /* margin-left: 50px; */
 }
 .menu {
   margin-top: 50px;
 }
 .menu-item {
   margin-top: 30px;
+  padding: 5px;
 }
 .menu-item a {
   color: #5a607f;
@@ -59,7 +74,7 @@
 }
 .active {
   background-color: #e6e9f4;
-  padding: 10px;
+  /* padding: 10px; */
 }
 .active a,
 .active i {

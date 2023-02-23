@@ -27,7 +27,7 @@ const HomePage = () => {
   return (
     <Layout>
       <div className="p-2">
-        <h2 className="p-2">Doctor List</h2>
+        <h2 className="p-2">Click to check doctors availability</h2>
         <Row>
           {doctors && doctors.map((doctor) => <DoctorList doctor={doctor} />)}
         </Row>

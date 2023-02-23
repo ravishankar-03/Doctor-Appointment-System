@@ -53,7 +53,7 @@ const Users = () => {
 
   return (
     <Layout>
-      <h1 className="text-center m-3">Users List</h1>
+      {/* <h1 className="text-center m-3">Users List</h1> */}
       <Table columns={columns} dataSource={users} />
     </Layout>
   );

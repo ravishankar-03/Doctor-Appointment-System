@@ -23,7 +23,7 @@ const Register = () => {
       }
     } catch (error) {
       dispatch(hideLoading());
-      console.log(error);
+      // console.log(error);
       message.error("Something Went Wrong");
     }
   };
@@ -48,7 +48,10 @@ const Register = () => {
           <Link to={"/login"} className="m-2 text-decoration-none">
             Already user login here
           </Link>
-          <button className="btn btn-primary" type="submit">
+          {/* <button className="btn btn-primary" type="submit">
+            Register
+          </button> */}
+          <button className="bn5" type="submit">
             Register
           </button>
         </Form>

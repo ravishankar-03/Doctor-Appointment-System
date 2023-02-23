@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useNavigate, useLocation, useParams } from "react-router-dom";
 import { adminMenu, userMenu } from "./../data/Data";
@@ -7,7 +7,6 @@ import "../styles/LayoutStyles.css";
 const Layout = ({ children }) => {
   const location = useLocation();
   const idparam = useParams();
-  console.log(idparam);
   const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
   // logout function
@@ -17,6 +16,8 @@ const Layout = ({ children }) => {
     navigate("/login");
   };
 
+  const [isOpen, setIsOpen] = useState();
+  const toggle = () => setIsOpen(!isOpen);
   // ====== doctor menu start ======
   const doctorMenu = [
     {
@@ -47,27 +48,46 @@ const Layout = ({ children }) => {
     <>
       <div className="main">
         <div className="layout">
-          <div className="sidebar">
+          <div className="sidebar" style={{ width: isOpen ? "300px" : "50px" }}>
             <div className="logo">
-              <h6>DAS APP</h6>
-              <hr />
+              <h6 style={{ display: isOpen ? "" : "none" }}>DAS APP</h6>
+              <i
+                className="fa-solid fa-bars"
+                onClick={toggle}
+                style={{
+                  marginLeft: isOpen ? "50px" : "20px",
+                  marginTop: isOpen ? "" : "20px",
+                }}
+              ></i>
+              {/* <hr /> */}
             </div>
             <div className="menu">
-              {SidebarMenu.map((menu) => {
+              {SidebarMenu.map((menu, index) => {
                 const isActive = location.pathname === menu.path;
                 return (
                   <>
                     <div className={`menu-item ${isActive && "active"}`}>
-                      <i className={menu.icon}></i>
-                      <Link to={menu.path}>{menu.name}</Link>
+                      <Link to={menu.path} key={index}>
+                        <i className={menu.icon}></i>
+                      </Link>
+                      <Link
+                        to={menu.path}
+                        style={{ display: isOpen ? "" : "none" }}
+                      >
+                        {menu.name}
+                      </Link>
                     </div>
                   </>
                 );
               })}
 
               <div className={`menu-item `} onClick={handleLogout}>
-                <i className="fa-solid fa-right-from-bracket"></i>
-                <Link to={"/login"}>Logout</Link>
+                <Link to={"/login"}>
+                  <i className="fa-solid fa-right-from-bracket"></i>
+                </Link>
+                <Link to={"/login"} style={{ display: isOpen ? "" : "none" }}>
+                  Logout
+                </Link>
               </div>
             </div>
           </div>
@@ -86,11 +106,15 @@ const Layout = ({ children }) => {
                       ? "Notifications"
                       : location.pathname ===
                         `/doctor/book-appointment/${idparam.doctorId}`
-                      ? "Booking Here"
+                      ? "Time Schedule for Doctor Appointments"
                       : location.pathname === `/doctor-appointments`
                       ? "Doctor Appointment List"
                       : location.pathname === `/doctor/profile/${idparam.id}`
                       ? "Manage Profile"
+                      : location.pathname === `/admin/doctors`
+                      ? "All Doctor List"
+                      : location.pathname === `/admin/users`
+                      ? "Users List"
                       : null}
                   </h4>
                 }
